@@ -1,0 +1,60 @@
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+
+:root {
+    --dark-blue: #02182B;
+    --red: #D7263D;
+    --gray-black: rgb(31, 29, 29);
+    --videogame-green: rgb(52, 194, 59);
+}
+
+
+.gui {
+    /* border: solid 1px var(--videogame-green); */
+    height: 10rem;
+    width: 96%;
+    margin: auto;
+    ;
+    display:inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+
+.fullProgress {
+    width: 20%;
+    height: 30px;
+    border: solid 2px var(--videogame-green);
+    border-radius: 25px;   
+}
+
+.progress {
+    width: 30%;
+    height: 100%;
+    background-color: var(--videogame-green);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.timerZone, .pointZone, .fullProgress {
+    margin-top: 5rem;
+    width: 20%;
+    text-align: center;
+}
+
+.timer, .points {
+    /* border: solid 1px white; */
+    color: white;
+    font-family: 'VT323', monospace;
+    font-size: 7rem;
+    padding: 0;
+    margin: 5%;
+}
+
+p {
+    font-family: 'VT323', monospace;
+    color: white;
+    font-size: 2rem;
+}
