@@ -1,0 +1,22 @@
+:root {
+    --dark-blue: #02182B;
+    --red: #D7263D;
+}
+
+
+body {
+    background-color: var(--dark-blue) ;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.startButton {
+    background-color: var(--red);
+    height: 150px;
+    width: 300px;
+    border-radius: 5px;
+}
