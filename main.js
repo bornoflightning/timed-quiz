@@ -1,4 +1,5 @@
 
+
 // list of all questions and answers
 let questions = [
     {
@@ -53,12 +54,13 @@ let currentQuestion = {};
 let allquestions = [...questions];
 let timeOut = 32000;
 let points = 0;
+let sec = 30;
 
 
 // declartion of all elements that reference HTML
 let timeLeft = document.getElementById("timer");
 let question = document.getElementById("question");
-let progressBar = document.getElementById("progressInfo");
+let progressBar = document.getElementById("progress");
 let choices = Array.from(document.querySelectorAll(".choice-text"));
 let choiceBoxes = Array.from(document.querySelectorAll(".question-box"));
 let totalPoints = document.getElementById("points");
@@ -66,13 +68,15 @@ let totalPoints = document.getElementById("points");
 
 
 // This function deals with creating the timer that changes HTML page dynamically
-function startTimer() {
-    let sec = 30;
+function startTimer() {    
     // each second 1 is subtracted with this timer
     timer = setInterval(()=>{
-        timeLeft.innerHTML = '00:' + sec;
+        timeLeft.innerHTML =  sec;
         sec--;  
-    }, 1000);
+    }, 1000);    
+    while (true) {
+        console.log(sec);
+    }
 };
 
 // this function ends the game, it can be referenced in multiple other functions
@@ -81,33 +85,41 @@ function endGame() {
     return window.location.assign('./scores.html');
 };
 
+
 // this function refercences 2 variables, one is the HTML elemnt that displays points
 // the other is the actual number of points 
 // it takes an integer as an argument which assings and updates HTML reference with
 function increaseScore(amount) {
     points += amount;
     totalPoints.innerHTML = points;
-}
+};
+
+function decreaseTime(amount) {
+    sec-= 5;
+    timeOut-= 5000;
+    console.log(timeOut);
+    timeLeft.innerHTML =  sec;
+};
 
 // this function increases the index # and displays the next question in array
 // along with all answers associated
 function nextQuestion() {
-    if(questionCounter > TOTAL_QUESTIONS){
-        alert('timer is working');
-        // localStorage.setItem('recentScore', score);
-        return window.location.assign('./scores.html');
+    if(questionCounter > TOTAL_QUESTIONS || sec < 0){
+        // alert('timer is working');
+        // // localStorage.setItem('recentScore', score);
+        // return window.location.assign('./scores.html');
+        endGame();
     }
 
     // this increases the counter for the current question
     questionCounter += 1;
     // this changes the percentage width css attribute to make the green progress bar move
-    progressBar.style.width = `${(questionCounter/TOTAL_QUESTIONS)* 100}%`;
+    progressBar.style.width = `${((questionCounter/TOTAL_QUESTIONS)* 100)-20}%`;
     // the current question will be pulled by accesing the array of objects,
     // than dot notation is used to retrieve value by the key name.
     // we subtract 1 from the counter since the index is 0 based
     currentQuestion = allquestions[questionCounter-1];
     question.innerText = currentQuestion.question;
-
 
     // this grabs the information captures in an array from all teh querys named choice-text
     // than it assigns the questions inside of the array with objects using dot notation 
@@ -120,24 +132,38 @@ function nextQuestion() {
 
 };
 
+// this section checks for a click on the answer to the question
 choiceBoxes.forEach(choice=> {
-    choice.addEventListener('click', e => {        
-        let choice = e.target;
+    choice.addEventListener('click', e => {       
+        // currentTarget allows bubbling if the <p> element is chosen 
+        let choice = e.currentTarget;
         let answer = choice.dataset['number'];
         
 
         let chosenAnswer = currentQuestion['answer' + answer];
         let correctAnswer = currentQuestion.correctAnswer;
-        // let chosenBox = 'box' + answer;
-        // let colorBox = document.getElementById(chosenBox);
+        // chosen box should match the class assigned to each div element
+        let chosenBox = 'box' + answer;
+        let colorBox = document.getElementById(chosenBox);
         
-        
+        // here we check to see if answer matches correct answer or not. 
+        //if correct, box will light up green
+        // and add 10 points to score
         if (chosenAnswer == correctAnswer) {
-            increaseScore(10);
-            nextQuestion();
+            increaseScore(10); 
+            colorBox.style.backgroundColor = "var(--videogame-green)";
+            setTimeout(()=> {
+                colorBox.style.backgroundColor = "var(--gray-black)"; 
+                nextQuestion(); 
+            }, 1000);
+        // if wrong, box will light up red and subtract time
          } else {
-            timeOut -= 32000;
-            nextQuestion();
+            decreaseTime(5);
+            colorBox.style.backgroundColor = "var(--red)";
+            setTimeout(()=> {
+                colorBox.style.backgroundColor = "var(--gray-black)"; 
+                nextQuestion(); 
+            }, 1000);
          };
         
         
@@ -168,3 +194,4 @@ startGame();
 //https://www.youtube.com/watch?v=4piMZDO5IOI
 //https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
 //https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+//https://www.w3schools.com/jsref/met_win_setinterval.asp

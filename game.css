@@ -35,8 +35,7 @@
     width: 0%;
     height: 100%;
     background-color: var(--videogame-green);
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-radius: 15px;
 }
 
 .timerZone, .pointZone, .fullProgress {
@@ -79,10 +78,8 @@ p {
 }
 
 
-
 .question-box:hover {
     box-shadow: 0 0.4rem 1.4rem 0 var(--videogame-green);
     background-color: var(--alpha-white)
-    
 }
 
