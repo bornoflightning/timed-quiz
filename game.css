@@ -7,6 +7,7 @@
     --red: #D7263D;
     --gray-black: rgb(31, 29, 29);
     --videogame-green: rgb(52, 194, 59);
+    --alpha-white: rgba(241, 234, 234, 0.199);
 }
 
 .gameDisplay {
@@ -31,7 +32,7 @@
 }
 
 .progress {
-    width: 30%;
+    width: 0%;
     height: 100%;
     background-color: var(--videogame-green);
     border-top-left-radius: 15px;
@@ -72,7 +73,16 @@ p {
     margin-bottom: 1rem;
     border-radius: 6px;
     border: solid 3px white;
-    min-width: 70rem;
+    width: 70%;
+    min-width: 7rem;
     padding-left: 2rem;
+}
+
+
+
+.question-box:hover {
+    box-shadow: 0 0.4rem 1.4rem 0 var(--videogame-green);
+    background-color: var(--alpha-white)
+    
 }
 

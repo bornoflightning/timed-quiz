@@ -11,36 +11,37 @@
 <body>
 
     <div class="gameDisplay">
-        <div class="gui"> <!-- this is where the gui stuff goes     -->
-            <div class="timerZone">
-                <p class="timer">0</p>
-                <p>timer</p>
-            </div>
+        <div class="gui"> <!-- this is where the gui stuff goes     -->           
             <div class="pointZone">
-                <p class="points">0</p>
-                <p>points</p> 
-            </div>                    
+                <p class="points" id="points">0</p>
+                <p id="pointsText">points</p> 
+            </div>    
+            <div class="timerZone">
+                <p class="timer" id="timer">00:00</p>
+                <p>timer</p>
+            </div>                
             <div class="fullProgress">                
                 <div class="progress"></div>
-                <p>progress</p>
+                <p id="progressInfo">progress</p>
             </div>
         </div>
         <div class="questions"> <!-- this is where the code for questions goes -->
-            <h1>Answer the following question...</h1>
-            <div class="question-box">
+            <h1>Answer the following questions...</h1>
+            <h1 id="question">Loading question...</h1>
+            <div class="question-box" id="box1" data-number="1">
                 <p class="choice-number">1.</p>
-                <p class="choice-text">hello</p>
+                <p class="choice-text" data-number="1">hello</p>
             </div>
-            <div class="question-box">
+            <div class="question-box" id="box2" data-number="2">
                 <p class="choice-number">2.</p>
-                <p class="choice-text">hello</p>
+                <p class="choice-text" data-number="2">hello</p>
             </div>
-            <div class="question-box">
+            <div class="question-box" id="box3" data-number="3">
                 <p class="choice-number">3.</p>
-                <p class="choice-text">hello</p>
+                <p class="choice-text" data-number="3">hello</p>
             </div>
         </div>
     </div>
-    
+    <script src="main.js"></script>
 </body>
 </html>
