@@ -8,34 +8,34 @@ var questions = [
     },
 
     {
-        question: "How do you declare a variable named 'number' equal to 5 in javascript"
-        anwer1: "int number = 5",
+        question: "How do you declare a variable named 'number' equal to 5 in javascript",
+        answer1: "int number = 5",
         answer2: "let number = 5",
         answer3: "number = 5",
         correctAnswer: "let number = 5"
     },
 
     {
-        question: "How do you declare a function in Javascript?"
-        anwer1: ""
-        answer2:
-        answer3:
-        correctAnswer:
+        question: "How do you declare a function in Javascript?",
+        answer1: "function createItem(){",
+        answer2: "public static void creatItem(){",
+        answer3: "def creatItem():",
+        correctAnswer: "function createItem(){"
     },
 
     {
-        question:
-        anwer1:
-        answer2:
-        answer3:
-        correctAnswer:
+        question: "What is Javascripts natural running environment?",
+        answer1: "Net beans",
+        answer2: "The Python Shell",
+        answer3: "The Window",
+        correctAnswer: "The Window"
     },
 
     {
-        question:
-        anwer1:
-        answer2:
-        answer3:
-        correctAnswer:
+        question: "Who created Javascript?",
+        answer1: "Brendan Eich",
+        answer2: "Guido Van Rossum",
+        answer3: "James Gosling",
+        correctAnswer: "Brendan Eich"
     }
-]
+];
