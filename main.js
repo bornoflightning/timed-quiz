@@ -93,6 +93,8 @@ function endGame() {
 function gameChecker() {
     setInterval(()=> {
         if (sec < -1 || questionCounter > TOTAL_QUESTIONS ) {
+            localStorage.setItem('new-score', totalPoints.innerText);
+            console.log(localStorage);
             sec = 0;
             endGame();
         };
@@ -118,11 +120,12 @@ function decreaseTime(amount) {
 // this function increases the index # and displays the next question in array
 // along with all answers associated
 function nextQuestion() {
-    if(questionCounter > TOTAL_QUESTIONS || sec < 0){
+    if(sec < -1 || questionCounter > TOTAL_QUESTIONS) {
         // alert('timer is working');
-        // // localStorage.setItem('recentScore', score);
+        localStorage.setItem('recentScore', score);
+        endGame();
         // return window.location.assign('./scores.html');
-    }
+    } else {
 
     // this increases the counter for the current question
     questionCounter += 1;
@@ -141,8 +144,8 @@ function nextQuestion() {
         let number = choice.dataset['number'];
         choice.innerText = currentQuestion['answer' + number];
         
-    });
-
+        });
+    };
 };
 
 // this section checks for a click on the answer to the question

@@ -1,0 +1,70 @@
+#scoresContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+}
+h1, h2 {
+    padding-top: -1rem;
+}
+
+#finalScore {
+    font-size: 5rem;
+    color: var(--videogame-green);
+    color: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0); 
+    animation: animate 1.3s linear infinite;
+    border-radius: 5px;
+    
+}
+
+#scoreInfo {
+    /* border: solid 1px white; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameInitials, #saveButton {
+    margin-bottom: 2rem;
+    height: 3rem;
+    width: 150px;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    text-align: center;
+    border-radius: 7px;
+    background-color: white;  
+}
+
+#saveButton:hover {
+    font-size: 2.3rem;
+    box-shadow: 0 .7rem .7rem 0 var(--videogame-green);
+    transform: scale(1);
+}
+
+.playAgain {
+    margin-top: -1rem;
+    padding-top: -1rem;
+}
+
+@keyframes animate {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+p {
+    background-color: white;
+    color: var(--videogame-green);    
+    height: 3rem;
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    border-radius: 7px;
+    text-align: center;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    margin-bottom: 0.5rem;
+    padding: 7px;
+}

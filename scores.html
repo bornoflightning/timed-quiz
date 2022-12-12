@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="scores.css">
     <title>High Scores</title>
 </head>
 <body>
-    <h1>High Scores go here</h1>
-    
+    <div id="scoresContent" >
+        <h1>Hall of fame</h1>
+        <h1>Your Score</h1>
+        <h1 id="finalScore" ></h1>
+        <h2>Enter your initials below</h2>
+        <form action="submit" id="scoreInfo">
+            <input id="gameInitials"  type="text" maxlength="2" size="3"
+            onkeyup="this.value = this.value.toUpperCase();">
+            <a id="saveButton" class="playAgain">SAVE</a>
+            <a id="saveButton"  href="./index.html" class="playAgain">PLAY AGAIN</a>
+        </form>  
+    </div>
+    <div id="previousScores">
+
+    </div>
+    <script src="scores.js"></script>
 </body>
 </html>
