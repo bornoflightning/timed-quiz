@@ -212,6 +212,7 @@ startGame();
 // These videos were part of my research to do this project, no plagirism happened,
 // but rather provided a live example on how to use certain functions
 // the organization, use of functions and names in my project are unique
+// https://www.the-art-of-web.com/html/input-field-uppercase/
 //https://www.youtube.com/watch?v=nGfTjA8qNDA
 //https://www.youtube.com/watch?v=f4fB9Xg2JEY&t=2915s
 //https://www.youtube.com/watch?v=4piMZDO5IOI
