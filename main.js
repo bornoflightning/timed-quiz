@@ -52,9 +52,10 @@ let timer;
 let questionCounter = 0;
 let currentQuestion = {};
 let allquestions = [...questions];
-let timeOut = 32000;
-let points = 0;
 let sec = 30;
+let timeOut = ((sec * 1000) + 2000);
+let points = 0;
+
 
 
 // declartion of all elements that reference HTML
@@ -64,6 +65,7 @@ let progressBar = document.getElementById("progress");
 let choices = Array.from(document.querySelectorAll(".choice-text"));
 let choiceBoxes = Array.from(document.querySelectorAll(".question-box"));
 let totalPoints = document.getElementById("points");
+let alert = document.getElementById("alertSpan");
 
 
 
@@ -74,15 +76,27 @@ function startTimer() {
         timeLeft.innerHTML =  sec;
         sec--;  
     }, 1000);    
-    while (true) {
-        console.log(sec);
-    }
+    
+    console.log(sec);
+    
 };
 
 // this function ends the game, it can be referenced in multiple other functions
 function endGame() {
-    alert("Time is up!!")
+    // alert("Time is up!!");
     return window.location.assign('./scores.html');
+};
+
+// This fucntion checks to make sure the game over conditions have not been met
+// every half second, it checks the progress of all questions and the timre
+// ensuring the counter is now below 0
+function gameChecker() {
+    setInterval(()=> {
+        if (sec < -1 || questionCounter > TOTAL_QUESTIONS ) {
+            sec = 0;
+            endGame();
+        };
+    }, 500);
 };
 
 
@@ -108,7 +122,6 @@ function nextQuestion() {
         // alert('timer is working');
         // // localStorage.setItem('recentScore', score);
         // return window.location.assign('./scores.html');
-        endGame();
     }
 
     // this increases the counter for the current question
@@ -152,22 +165,28 @@ choiceBoxes.forEach(choice=> {
         if (chosenAnswer == correctAnswer) {
             increaseScore(10); 
             colorBox.style.backgroundColor = "var(--videogame-green)";
+            alert.style.color = "var(--videogame-green)";
+            alert.innerText = "PLUS 10 POINTS!";
             setTimeout(()=> {
+                alert.style.color = "white";
+                alert.innerText = " ";
                 colorBox.style.backgroundColor = "var(--gray-black)"; 
                 nextQuestion(); 
-            }, 1000);
+            }, 500);
         // if wrong, box will light up red and subtract time
          } else {
             decreaseTime(5);
             colorBox.style.backgroundColor = "var(--red)";
-            setTimeout(()=> {
+            alert.style.color = "var(--red)";
+            alert.innerText = "MINUS 5 SECONDS!";
+            setTimeout(()=> {     
+                alert.style.color = "white";
+                alert.innerText = " ";           
                 colorBox.style.backgroundColor = "var(--gray-black)"; 
+                
                 nextQuestion(); 
-            }, 1000);
+            }, 500);
          };
-        
-        
-
     });
 });
 
@@ -175,8 +194,9 @@ choiceBoxes.forEach(choice=> {
 // and makes the game work
 function startGame() {
     startTimer();
+    gameChecker();
     nextQuestion();
-    setTimeout(endGame, timeOut);
+    
 };
 
 
